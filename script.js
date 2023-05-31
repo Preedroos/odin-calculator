@@ -3,13 +3,12 @@ let firstNumber = '';
 let secondNumber = '';
 let operator = '';
 
-const buttons = document.querySelectorAll('.buttons__number');
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    displayValue == 0
-      ? updateDisplay(button.textContent)
-      : updateDisplay(displayValue + button.textContent);
-  });
+document.addEventListener('click', event => {
+  const button = event.target.closest('.buttons__number');
+  if (!button) return;
+
+  const buttonValue = button.textContent;
+  updateDisplay(displayValue == 0 ? buttonValue : displayValue + buttonValue);
 });
 
 const equalsButton = document.querySelector('.buttons__equal');
